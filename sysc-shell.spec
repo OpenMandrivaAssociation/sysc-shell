@@ -9,6 +9,9 @@ Group:		Window Manager/Bar
 URL:		https://github.com/Nomadcxx/sysc-shell
 Source0:	https://github.com/Nomadcxx/sysc-shell/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:	%{name}-%{version}-vendor.tar.xz
+Source2:  config.example.json
+Source3:  first-run.md
+Source4:  niri-bindings.kdl
 
 BuildRequires:	golang
 
