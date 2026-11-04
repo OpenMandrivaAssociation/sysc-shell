@@ -34,6 +34,9 @@ with separate daemons for notifications, clipboard history and the system tray.
 %prep
 %autosetup -p1
 tar -xf %{S:1}
+cp %{S:2} .
+cp %{S:3} .
+cp %{S:4} .
 
 %build
 go build -o %{name} ./cmd/%{name}/
