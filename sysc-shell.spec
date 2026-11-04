@@ -49,13 +49,6 @@ sed -i '/After=graphical-session.target/a Wants=sysc-notify.service sysc-tray.se
   # Seed only a missing user config; systemd runs these commands as the session user.
 sed -i '/Type=simple/a ExecStartPre=/usr/bin/mkdir -p %E/sysc-shell\nExecStartPre=/usr/bin/cp --update=none /usr/share/doc/sysc-shell/config.example.json %E/sysc-shell/config.json' %{buildroot}%{_userunitdir}/sysc-shell.service
 
-install -Dm644 README.md %{buildroot}%{_docdir}/%{name}/README.md
-install -Dm644 LICENSE %{buildroot}%{_datadir}/licenses/%{name}/LICENSE
-
-install -Dm644 %{_topdir}/config.example.json %{buildroot}%{_docdir}/%{name}/config.example.json
-install -Dm644 %{_topdir}/first-run.md %{buildroot}%{_docdir}/%{name}/first-run.md
-install -Dm644 %{_topdir}/niri-bindings.kdl %{buildroot}%{_docdir}/%{name}/niri-bindings.kdl
-
 %post
 %systemd_user_post sysc-shell.service
 
@@ -64,9 +57,6 @@ install -Dm644 %{_topdir}/niri-bindings.kdl %{buildroot}%{_docdir}/%{name}/niri-
 
 %files
 %license LICENSE
-%doc README.md
+%doc README.md config.example.json first-run.md niri-bindings.kdl
 %{_bindir}/%{name}
 %{_userunitdir}/%{name}.service
-%{_docdir}/%{name}/config.example.json
-%{_docdir}/%{name}/first-run.md
-%{_docdir}/%{name}/niri-bindings.kdl
